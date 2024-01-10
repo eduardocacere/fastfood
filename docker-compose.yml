@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mongodb-fastfood:
+    image: mongo:7.0
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: fiap
+      MONGO_INITDB_ROOT_PASSWORD: fastfood
+    networks:
+      - fiap-net
+
+
+  app:
+    image: fastfood:lasted
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      MONGO_URI: mongodb://fiap:fastfood@mongodb-fastfood:27017
+      MONGO_DATABASE: fiapdb
+    ports:
+      - 8082:8080
+    depends_on:
+      - mongodb-fastfood
+    networks:
+      - fiap-net
+
+
+networks:
+  fiap-net:
+    driver: bridge
