@@ -1,6 +1,10 @@
 package br.com.fastfood.adapter.web
 
 import br.com.fastfood.core.domain.Client
+import br.com.fastfood.core.domain.request.ClientRequest
+import br.com.fastfood.core.domain.response.ClientResponse
+import br.com.fastfood.core.extensions.toDomain
+import br.com.fastfood.core.extensions.toResponse
 import br.com.fastfood.core.useCase.IClientUseCase
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -17,15 +21,15 @@ class ClientController(
 ) {
 
     @PostMapping
-    fun create(client: Client): ResponseEntity<Client> {
-        val clientResponse = useCase.create(client)
-        return ResponseEntity.status(HttpStatus.OK).body(clientResponse)
+    fun create(client: ClientRequest): ResponseEntity<ClientResponse> {
+        val clientResponse = useCase.create(client.toDomain())
+        return ResponseEntity.status(HttpStatus.OK).body(clientResponse.toResponse())
     }
 
     @GetMapping("/{doc}")
-    fun findByDoc(@PathVariable doc: String): ResponseEntity<Client> {
+    fun findByDoc(@PathVariable doc: String): ResponseEntity<ClientResponse> {
         val client = useCase.findByDoc(doc)
-        return ResponseEntity.status(HttpStatus.OK).body(client)
+        return ResponseEntity.status(HttpStatus.OK).body(client.toResponse())
     }
 
 
