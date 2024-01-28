@@ -3,12 +3,15 @@ package br.com.fastfood.core.useCase
 import br.com.fastfood.adapter.persistence.enums.ProductCategory
 import br.com.fastfood.adapter.persistence.repository.ProductRepository
 import br.com.fastfood.core.domain.Product
+import br.com.fastfood.core.domain.exception.NotFoundException
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
 class ProductUseCase(
         private val productRepository: ProductRepository
 ): IProductUseCase {
+    val logger = LoggerFactory.getLogger(this::class.java)
 
     override fun create(product: Product): Product {
         return productRepository.create(product)
@@ -20,7 +23,7 @@ class ProductUseCase(
 
     override fun findByCode(code: String): Product {
         return productRepository.findByCode(code)
-                ?:throw Exception("Produto não encontrado.")
+                ?:throw NotFoundException("Product ($code) not found.")
     }
 
     override fun findByCategory(category: ProductCategory): MutableList<Product> {

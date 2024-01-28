@@ -6,5 +6,6 @@ interface IClientRepository {
 
     fun create(client: Client): Client
     fun findByDoc(cpf: String): Client?
+    fun findByEmail(cpf: String): Client?
     fun list(): MutableList<Client>
 }
