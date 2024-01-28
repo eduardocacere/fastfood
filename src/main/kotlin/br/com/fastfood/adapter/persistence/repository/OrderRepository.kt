@@ -3,6 +3,7 @@ package br.com.fastfood.adapter.persistence.repository
 import br.com.fastfood.adapter.persistence.enums.OrderStatus
 import br.com.fastfood.adapter.persistence.port.OrderMongoDBPort
 import br.com.fastfood.core.domain.Order
+import br.com.fastfood.core.domain.exception.NotFoundException
 import br.com.fastfood.core.extensions.toDocument
 import br.com.fastfood.core.extensions.toDomain
 import br.com.fastfood.core.port.repository.IOrderRepository
@@ -20,7 +21,7 @@ class OrderRepository(
     override fun findByNumberOrder(numberOrder: String): Order {
         return orderMongoDBPort.findByNumberOrder(numberOrder)
                 ?.toDomain()
-                ?:throw Exception("")
+                ?:throw NotFoundException("Order not found")
     }
 
     override fun findByStatus(status: OrderStatus): MutableList<Order> {

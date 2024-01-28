@@ -4,7 +4,8 @@ import br.com.fastfood.adapter.persistence.model.OrderDocument
 import br.com.fastfood.adapter.persistence.model.OrderItemDocument
 import br.com.fastfood.core.domain.Order
 import br.com.fastfood.core.domain.OrderItem
-import br.com.fastfood.core.domain.request.OrderStoreRequest
+import br.com.fastfood.core.domain.response.OrderDetailResponse
+import br.com.fastfood.core.domain.response.OrderItemResponse
 import br.com.fastfood.core.domain.response.OrderResponse
 
 fun Order.toDocument(): OrderDocument =
@@ -52,5 +53,26 @@ fun OrderItemDocument.toDomain(): OrderItem =
 fun Order.toResponse(): OrderResponse =
         OrderResponse(
                 numberOrder = numberOrder,
-                total = total
+                total = total,
+                status = status
         )
+
+fun Order.toOrderDetailResponse(): OrderDetailResponse =
+        OrderDetailResponse(
+                numberOrder = numberOrder,
+                client = client?.toResponse(),
+                total = total,
+                status = status,
+                items = items.map { it.toOrderItemResponse() }.toMutableList(),
+                typeDelivery = typeDelivery,
+                createAt = createAt
+        )
+
+fun OrderItem.toOrderItemResponse(): OrderItemResponse =
+        OrderItemResponse(
+                name = name,
+                codeProduct = codeProduct,
+                quantity = quantity,
+                price = price
+        )
+

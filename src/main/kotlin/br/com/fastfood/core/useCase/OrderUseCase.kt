@@ -42,6 +42,18 @@ class OrderUseCase(
 
     }
 
+    override fun createWeb(orderStoreRequest: OrderStoreRequest): Order {
+        TODO("Not yet implemented")
+    }
+
+    override fun findByNumberOrder(numberOrder: String): Order {
+        return orderRepository.findByNumberOrder(numberOrder)
+    }
+
+    override fun findByStatus(status: OrderStatus): MutableList<Order>? {
+        return orderRepository.findByStatus(status)
+    }
+
     private fun buildOrderItems(request: OrderStoreRequest) = request.items.map {
         val product = productUseCase.findByCode(it.codeProduct)
         val orderItem = OrderItem(
@@ -54,18 +66,6 @@ class OrderUseCase(
         )
         orderItem
     }.toMutableList()
-
-    override fun createWeb(orderStoreRequest: OrderStoreRequest): Order {
-        TODO("Not yet implemented")
-    }
-
-    override fun findByNumberOrder(numberOrder: String): Order {
-        TODO("Not yet implemented")
-    }
-
-    override fun findByStatus(status: OrderStatus): MutableList<Order>? {
-        TODO("Not yet implemented")
-    }
 
     private fun buildOrder(client: Client?, orderItems: MutableList<OrderItem>, totalOrderItem: Double, request: OrderStoreRequest) =
             Order(
