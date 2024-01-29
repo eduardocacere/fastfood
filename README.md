@@ -38,7 +38,25 @@ Some of the technologies used in the project:
 
 ## Run the project
 
-#### Build of project
+The application is configured to run on port **8080** and the database runs on port **27017**
+
+#### Run of project by Script
+
+A script was created where steps are taken to run the application automatically
+This way, when executing the script, the application is executed
+---
+
+**Run the command:** 
+
+``./start.sh``
+
+This script will:
+- build the application
+- create the docker image
+- run the container
+---
+
+#### Run of project Manual
 ``mvn package``
 
 #### Generate imagem docker

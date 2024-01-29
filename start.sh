@@ -1,17 +1,22 @@
 #!/bin/bash
 
 echo "Iniciando Applicação"
+echo " "
+echo "Gerando pacote da applicação"
+  sleep 5
+  ./mvnw clean package
 
+echo " "
+echo "Fazendp build da imagem"
+  sleep 5
+  docker build -t fastfood:lasted .
 
-echo "Gerando build da imagem"
+echo " "
+echo "Subindo Serviços e dependencias"
+  sleep 5
+  docker-compose -f docker-compose.yml up -d
 
-'mvn clean package'
-
-#packageΩecho "gerando imagem"
-
-#docker build -t fastfood:latest .
-
-# Subir app e banco
-#docker-compose -f docker-composer.yml
-
+echo " "
+echo " ****** Aplicação esta rodando ******"
+echo " "
 
