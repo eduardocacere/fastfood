@@ -25,7 +25,7 @@ data class CheckoutRequest(
         @field:Schema(
                 title = "Value to be paid",
                 description = "Value to be paid",
-                example = "10.5",
+                example = "1",
                 type = "Double"
         )
         val value: Double

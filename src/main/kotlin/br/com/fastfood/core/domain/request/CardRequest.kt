@@ -27,13 +27,13 @@ data class CardRequest(
         @field:Schema(
                 title = "Credit Card validate",
                 description = "Credit Card validate",
-                example = "MM-yyyy",
+                example = "12-2024",
                 type = "String",
                 pattern = "MM-yyyy"
 
         )
         @JsonFormat(pattern="MM-yyyy")
-        val dateValidate: LocalDate,
+        val dateValidate: String,
 
         @field:Schema(
                 title = "Credit Card code",

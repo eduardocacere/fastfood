@@ -6,7 +6,7 @@ import java.time.LocalDate
 data class CardDocument(
         val nameCard: String,
         val number: String,
-        val dateValidate: LocalDate,
+        val dateValidate: String,
         val code: Number,
         val brand: Brand,
         val document: String
