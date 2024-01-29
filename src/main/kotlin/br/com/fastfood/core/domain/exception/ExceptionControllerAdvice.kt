@@ -1,5 +1,6 @@
 package br.com.fastfood.core.domain.exception
 
+import com.mongodb.MongoWriteException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.dao.IncorrectResultSizeDataAccessException
@@ -73,4 +74,29 @@ class ExceptionControllerAdvice {
         logger.error("An error has occurred - ${ex.message}", ex.printStackTrace())
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error)
     }
+
+    @ExceptionHandler
+    fun handleMongoWriteException(ex: MongoWriteException): ResponseEntity<Error> {
+        val error = Error(
+                message = ex.message.toString(),
+                httpError = HttpStatus.INTERNAL_SERVER_ERROR.reasonPhrase,
+                httpCode = HttpStatus.INTERNAL_SERVER_ERROR.value()
+        )
+
+        logger.error("An error has occurred - ${ex.message}", ex.printStackTrace())
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error)
+    }
+
+    @ExceptionHandler
+    fun handleException(ex: Exception): ResponseEntity<Error> {
+        val error = Error(
+                message = ex.message.toString(),
+                httpError = HttpStatus.INTERNAL_SERVER_ERROR.reasonPhrase,
+                httpCode = HttpStatus.INTERNAL_SERVER_ERROR.value()
+        )
+
+        logger.error("An error has occurred - ${ex.message}", ex.printStackTrace())
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error)
+    }
+
 }
