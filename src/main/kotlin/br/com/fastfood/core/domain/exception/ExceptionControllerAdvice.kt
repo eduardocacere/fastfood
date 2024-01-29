@@ -2,6 +2,7 @@ package br.com.fastfood.core.domain.exception
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.dao.IncorrectResultSizeDataAccessException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.http.converter.HttpMessageNotReadableException
@@ -42,6 +43,18 @@ class ExceptionControllerAdvice {
     fun handleHttpMessageNotReadableException(ex: HttpMessageNotReadableException): ResponseEntity<Error> {
         val error = Error(
                 message = "Message Not Readable",
+                httpError = HttpStatus.BAD_REQUEST.reasonPhrase,
+                httpCode = HttpStatus.BAD_REQUEST.value()
+        )
+
+        logger.error("An error has occurred - ${ex.message}", ex.printStackTrace())
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error)
+    }
+
+    @ExceptionHandler
+    fun handleIncorrectResultSizeDataAccessException(ex: IncorrectResultSizeDataAccessException): ResponseEntity<Error> {
+        val error = Error(
+                message = ex.message.toString(),
                 httpError = HttpStatus.BAD_REQUEST.reasonPhrase,
                 httpCode = HttpStatus.BAD_REQUEST.value()
         )

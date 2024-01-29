@@ -1,13 +1,14 @@
-package br.com.fastfood.core.useCase
+package br.com.fastfood.core.useCase.impl
 
 import br.com.fastfood.adapter.persistence.enums.OrderStatus
 import br.com.fastfood.core.domain.Client
 import br.com.fastfood.core.domain.Order
 import br.com.fastfood.core.domain.OrderItem
 import br.com.fastfood.core.domain.exception.FastFoodException
+import br.com.fastfood.core.domain.exception.NotFoundException
 import br.com.fastfood.core.domain.request.OrderStoreRequest
-import br.com.fastfood.core.port.repository.IClientRepository
 import br.com.fastfood.core.port.repository.IOrderRepository
+import br.com.fastfood.core.useCase.IOrderUseCase
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -52,6 +53,13 @@ class OrderUseCase(
 
     override fun findByStatus(status: OrderStatus): MutableList<Order>? {
         return orderRepository.findByStatus(status)
+    }
+
+    override fun update(order: Order): Order {
+        if(order.id == null) {
+            throw NotFoundException("Order not found for update")
+        }
+        return orderRepository.create(order)
     }
 
     private fun buildOrderItems(request: OrderStoreRequest) = request.items.map {

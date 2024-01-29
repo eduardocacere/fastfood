@@ -1,9 +1,10 @@
-package br.com.fastfood.core.useCase
+package br.com.fastfood.core.useCase.impl
 
 import br.com.fastfood.adapter.persistence.enums.ProductCategory
 import br.com.fastfood.adapter.persistence.repository.ProductRepository
 import br.com.fastfood.core.domain.Product
 import br.com.fastfood.core.domain.exception.NotFoundException
+import br.com.fastfood.core.useCase.IProductUseCase
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 

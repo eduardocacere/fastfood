@@ -12,7 +12,7 @@ data class Order (
         val deliveryAddress : Address? = null,
         val items: MutableList<OrderItem>,
         val total: Double,
-        val status: OrderStatus,
+        var status: OrderStatus,
         val typeDelivery: TypeDelivery,
         val createAt: LocalDateTime
 )

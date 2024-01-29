@@ -1,12 +1,11 @@
-package br.com.fastfood.core.useCase
+package br.com.fastfood.core.useCase.impl
 
 import br.com.fastfood.core.domain.Client
-import br.com.fastfood.core.domain.exception.FastFoodException
 import br.com.fastfood.core.domain.exception.NotFoundException
 import br.com.fastfood.core.domain.request.ClientOrderRequest
 import br.com.fastfood.core.extensions.toClient
-import br.com.fastfood.core.extensions.toDocument
 import br.com.fastfood.core.port.repository.IClientRepository
+import br.com.fastfood.core.useCase.IClientUseCase
 import org.springframework.stereotype.Service
 
 @Service

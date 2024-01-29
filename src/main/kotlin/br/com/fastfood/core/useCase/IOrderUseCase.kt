@@ -14,4 +14,6 @@ interface IOrderUseCase {
     fun findByNumberOrder(numberOrder: String): Order
 
     fun findByStatus(status: OrderStatus): MutableList<Order>?
+
+    fun update(order: Order): Order
 }
