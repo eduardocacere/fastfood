@@ -8,7 +8,7 @@ The fast-food restaurant management system aims to:
 - **Generate checkout for payment:** with order information for the customer to complete payment.
 
 ### Process flow of how fast food should work
-![img.png](img.png)
+![img.png](docs/img.png)
 
 
 
@@ -48,6 +48,17 @@ Some of the technologies used in the project:
 When running the docker composer file, the mongodb database is started,
 already including some masses of data in the base for product and customer collections
 
-``docker-compose -f docker-compose.yml up``
+``docker-compose -f docker-compose.yml up -d``
+
+After starting the containers, the application will run on port 8080
+
+And it can be accessed through the address
+
+http://localhost:8080/swagger-ui/index.html
+
+
+
+
+
 
 
