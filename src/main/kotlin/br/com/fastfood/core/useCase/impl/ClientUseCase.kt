@@ -28,7 +28,6 @@ class ClientUseCase(
 
     override fun findOrCreate(clientOrderRequest: ClientOrderRequest?): Client {
         return clientOrderRequest
-                ?.takeIf { it.email.isNullOrEmpty().not() }
                 ?.let { findByEmail(it.email!!) }
                 ?: create(clientOrderRequest?.toClient()!!)
 

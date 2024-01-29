@@ -6,6 +6,7 @@ import br.com.fastfood.core.domain.response.ProductResponse
 import br.com.fastfood.core.extensions.toDomain
 import br.com.fastfood.core.extensions.toResponse
 import br.com.fastfood.core.useCase.IProductUseCase
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -25,7 +26,7 @@ private val useCase: IProductUseCase
 {
 
     @PostMapping
-    fun create(@RequestBody productRequest: ProductRequest): ResponseEntity<ProductResponse> {
+    fun create(@RequestBody @Valid productRequest: ProductRequest): ResponseEntity<ProductResponse> {
 
         val response = useCase.create(productRequest.toDomain()).toResponse()
         return ResponseEntity.status(HttpStatus.OK).body(response)

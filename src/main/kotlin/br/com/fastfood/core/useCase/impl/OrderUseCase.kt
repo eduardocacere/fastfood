@@ -6,6 +6,7 @@ import br.com.fastfood.core.domain.Order
 import br.com.fastfood.core.domain.OrderItem
 import br.com.fastfood.core.domain.exception.FastFoodException
 import br.com.fastfood.core.domain.exception.NotFoundException
+import br.com.fastfood.core.domain.request.ClientOrderRequest
 import br.com.fastfood.core.domain.request.OrderStoreRequest
 import br.com.fastfood.core.port.repository.IOrderRepository
 import br.com.fastfood.core.useCase.IOrderUseCase
@@ -26,7 +27,7 @@ class OrderUseCase(
     override fun createStore(request: OrderStoreRequest): Order {
         logger.info("Create Order for Store - $request")
 
-        val client =  clientUseCase.findOrCreate(request.client)
+        val client: Client? = findOrCreateClient(request.client)
 
         if(request.items.isEmpty()) {
             throw FastFoodException(message = "Item List cannot be empty", code = HttpStatus.BAD_REQUEST)
@@ -92,5 +93,12 @@ class OrderUseCase(
             total += (it.quantity).toLong() * (it.price)
         }
         return total
+    }
+
+    private fun findOrCreateClient(client: ClientOrderRequest?): Client? {
+        if(client?.email.isNullOrEmpty().not()) {
+            return clientUseCase.findOrCreate(client)
+        }
+        return null
     }
 }

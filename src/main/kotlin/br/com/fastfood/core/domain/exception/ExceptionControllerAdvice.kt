@@ -62,4 +62,15 @@ class ExceptionControllerAdvice {
         logger.error("An error has occurred - ${ex.message}", ex.printStackTrace())
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error)
     }
+    @ExceptionHandler
+    fun hanfleNullPointerException(ex: NullPointerException): ResponseEntity<Error> {
+        val error = Error(
+                message = ex.message.toString(),
+                httpError = HttpStatus.INTERNAL_SERVER_ERROR.reasonPhrase,
+                httpCode = HttpStatus.INTERNAL_SERVER_ERROR.value()
+        )
+
+        logger.error("An error has occurred - ${ex.message}", ex.printStackTrace())
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error)
+    }
 }

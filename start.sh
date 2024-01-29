@@ -11,4 +11,7 @@ echo "Gerando build da imagem"
 
 #docker build -t fastfood:latest .
 
+# Subir app e banco
+#docker-compose -f docker-composer.yml
+
 
