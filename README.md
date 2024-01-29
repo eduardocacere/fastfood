@@ -54,6 +54,17 @@ This script will:
 - build the application
 - create the docker image
 - run the container
+
+ **Observation** 
+
+If there is a problem with permission to run the script, you can execute the command below
+
+`` sudo chmod +x filename.sh ``
+
+This will give the necessary permissions to run the file.
+
+Another option may be to run the commands manually as described below
+
 ---
 
 #### Run of project Manual
