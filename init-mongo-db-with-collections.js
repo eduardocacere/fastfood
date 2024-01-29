@@ -133,9 +133,9 @@ db.getCollection("product").insertMany([
 
 db.getCollection("client").insertMany([
 {
-    "name" : "Eduardo Sanches",
-    "email" : "teste@teste.com",
-    "cpf" : "11122233300",
+    "name" : "Cliente Teste",
+    "email" : "teste@teste.com.br",
+    "cpf" : "99999999999",
     "_class" : "br.com.fastfood.adapter.persistence.model.ClientDocument"
 }
 ])
