@@ -7,4 +7,6 @@ import org.springframework.data.mongodb.repository.MongoRepository
 interface ClientMongoDBPort: MongoRepository<ClientDocument, ObjectId> {
 
     fun findByCpf(cpf: String): ClientDocument?
+
+    fun findByEmail(email: String): ClientDocument?
 }

@@ -21,6 +21,11 @@ class ClientRepository(
                 ?.toDomain()
     }
 
+    override fun findByEmail(email: String): Client? {
+        return clientMongoDBPort.findByEmail(email)
+                ?.toDomain()
+    }
+
     override fun list(): MutableList<Client> {
         return clientMongoDBPort.findAll()
                 .map { it.toDomain() }
