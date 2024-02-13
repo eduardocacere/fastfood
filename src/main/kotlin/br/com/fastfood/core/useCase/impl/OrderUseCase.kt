@@ -79,6 +79,17 @@ class OrderUseCase(
         return orderQueue
     }
 
+    override fun updateStatus(numberOrder: String, status: OrderStatus): Order {
+        val order = findByNumberOrder(numberOrder)
+
+        order.status = status
+        val orderUpdated = update(order)
+
+        return orderUpdated
+
+
+    }
+
     private fun buildOrderItems(request: OrderStoreRequest) = request.items.map {
         val product = productUseCase.findByCode(it.codeProduct)
         val orderItem = OrderItem(

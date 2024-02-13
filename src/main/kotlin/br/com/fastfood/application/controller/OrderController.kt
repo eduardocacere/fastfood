@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -102,7 +103,7 @@ class OrderController(
     }
 
 
-    @Operation(summary = "Find all order pendig")
+    @Operation(summary = "Find all by flow ")
     @ApiResponses(value = [
         ApiResponse(
                 responseCode = "200",
@@ -126,4 +127,31 @@ class OrderController(
         return ResponseEntity.status(HttpStatus.OK).body(ordersQueue)
     }
 
+
+    @Operation(summary = "Find all order pendig")
+    @ApiResponses(value = [
+        ApiResponse(
+                responseCode = "200",
+                description = "Create client",
+                content = [Content(mediaType = "application/json", schema = Schema(implementation = OrderResponse::class))]
+        ),
+        ApiResponse(
+                responseCode = "400",
+                description = "An error occurred during processing",
+                content = [Content(mediaType = "application/json", schema = Schema(implementation = Error::class))]
+        ),
+        ApiResponse(
+                responseCode = "404",
+                description = "Not found",
+                content = [Content(mediaType = "application/json", schema = Schema(implementation = Error::class))]
+        )
+    ])
+    @PutMapping("/{numberOrder}/status/{status}")
+    fun update(@PathVariable numberOrder: String, status: OrderStatus): ResponseEntity<OrderResponse> {
+        val order = useCase.updateStatus(numberOrder, status).toResponse()
+        return ResponseEntity.status(HttpStatus.OK).body(order)
+    }
+
+
 }
+

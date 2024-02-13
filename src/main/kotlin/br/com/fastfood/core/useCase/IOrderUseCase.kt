@@ -19,4 +19,6 @@ interface IOrderUseCase {
     fun findOrderByFlow(): OrderQueueResponse
 
     fun update(order: Order): Order
+
+    fun updateStatus(numberOrder: String, status: OrderStatus): Order
 }
