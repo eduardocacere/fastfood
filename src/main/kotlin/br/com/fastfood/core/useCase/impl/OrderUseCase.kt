@@ -1,6 +1,6 @@
 package br.com.fastfood.core.useCase.impl
 
-import br.com.fastfood.adapter.persistence.enums.OrderStatus
+import br.com.fastfood.infra.enums.OrderStatus
 import br.com.fastfood.core.domain.Client
 import br.com.fastfood.core.domain.Order
 import br.com.fastfood.core.domain.OrderItem
@@ -8,7 +8,7 @@ import br.com.fastfood.core.domain.exception.FastFoodException
 import br.com.fastfood.core.domain.exception.NotFoundException
 import br.com.fastfood.core.domain.request.ClientOrderRequest
 import br.com.fastfood.core.domain.request.OrderStoreRequest
-import br.com.fastfood.core.port.repository.IOrderRepository
+import br.com.fastfood.core.repositoryService.OrderRepositoryService
 import br.com.fastfood.core.useCase.IOrderUseCase
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -19,7 +19,7 @@ import java.util.*
 
 @Service
 class OrderUseCase(
-        private val orderRepository: IOrderRepository,
+        private val orderRepository: OrderRepositoryService,
         private val clientUseCase: ClientUseCase,
         private val productUseCase: ProductUseCase
 ): IOrderUseCase {

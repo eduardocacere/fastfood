@@ -1,7 +1,7 @@
 package br.com.fastfood.core.domain
 
-import br.com.fastfood.adapter.persistence.enums.OrderStatus
-import br.com.fastfood.adapter.persistence.enums.TypePayment
+import br.com.fastfood.infra.enums.OrderStatus
+import br.com.fastfood.infra.enums.TypePayment
 import org.bson.types.ObjectId
 import java.time.LocalDateTime
 

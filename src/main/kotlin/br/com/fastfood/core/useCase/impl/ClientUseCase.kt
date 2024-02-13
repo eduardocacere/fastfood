@@ -3,14 +3,14 @@ package br.com.fastfood.core.useCase.impl
 import br.com.fastfood.core.domain.Client
 import br.com.fastfood.core.domain.exception.NotFoundException
 import br.com.fastfood.core.domain.request.ClientOrderRequest
-import br.com.fastfood.core.extensions.toClient
-import br.com.fastfood.core.port.repository.IClientRepository
+import br.com.fastfood.infra.extensions.toClient
+import br.com.fastfood.core.repositoryService.ClientRepositoryService
 import br.com.fastfood.core.useCase.IClientUseCase
 import org.springframework.stereotype.Service
 
 @Service
 class ClientUseCase(
-        private val repository: IClientRepository
+        private val repository: ClientRepositoryService
 ): IClientUseCase {
 
     override fun findByDoc(cpf: String): Client {

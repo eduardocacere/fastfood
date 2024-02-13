@@ -1,13 +1,13 @@
 package br.com.fastfood.core.useCase.impl
 
-import br.com.fastfood.adapter.persistence.enums.OrderStatus
-import br.com.fastfood.adapter.persistence.enums.TypePayment
-import br.com.fastfood.adapter.persistence.repository.CheckoutRepository
+import br.com.fastfood.infra.enums.OrderStatus
+import br.com.fastfood.infra.enums.TypePayment
+import br.com.fastfood.infra.repository.CheckoutRepository
 import br.com.fastfood.core.domain.Checkout
 import br.com.fastfood.core.domain.exception.FastFoodException
 import br.com.fastfood.core.domain.exception.NotFoundException
 import br.com.fastfood.core.domain.request.CheckoutRequest
-import br.com.fastfood.core.extensions.toCardDomain
+import br.com.fastfood.infra.extensions.toCardDomain
 import br.com.fastfood.core.useCase.IOrderUseCase
 import br.com.fastfood.core.useCase.IUseCaseCheckout
 import org.slf4j.Logger

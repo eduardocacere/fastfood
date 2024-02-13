@@ -1,8 +1,8 @@
-package br.com.fastfood.core.domain
+package br.com.fastfood.infra.model
 
 import br.com.fastfood.infra.enums.Brand
 
-data class Card(
+data class CardDocument(
         val nameCard: String,
         val number: String,
         val dateValidate: String,

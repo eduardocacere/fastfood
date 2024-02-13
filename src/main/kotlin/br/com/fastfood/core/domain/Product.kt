@@ -1,6 +1,6 @@
 package br.com.fastfood.core.domain
 
-import br.com.fastfood.adapter.persistence.enums.ProductCategory
+import br.com.fastfood.infra.enums.ProductCategory
 import org.bson.types.ObjectId
 import java.time.LocalDateTime
 

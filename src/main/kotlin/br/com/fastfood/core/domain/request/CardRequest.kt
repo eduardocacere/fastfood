@@ -1,9 +1,9 @@
 package br.com.fastfood.core.domain.request
 
-import br.com.fastfood.adapter.persistence.enums.Brand
+import br.com.fastfood.infra.enums.Brand
 import com.fasterxml.jackson.annotation.JsonFormat
 import io.swagger.v3.oas.annotations.media.Schema
-import java.time.LocalDate
+
 @Schema(
         description = "Model for a card credit."
 )

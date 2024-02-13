@@ -1,6 +1,6 @@
 package br.com.fastfood.core.useCase
 
-import br.com.fastfood.adapter.persistence.enums.OrderStatus
+import br.com.fastfood.infra.enums.OrderStatus
 import br.com.fastfood.core.domain.Order
 import br.com.fastfood.core.domain.request.OrderStoreRequest
 

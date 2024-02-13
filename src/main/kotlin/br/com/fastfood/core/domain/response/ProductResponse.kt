@@ -1,6 +1,6 @@
 package br.com.fastfood.core.domain.response
 
-import br.com.fastfood.adapter.persistence.enums.ProductCategory
+import br.com.fastfood.infra.enums.ProductCategory
 import java.time.LocalDateTime
 
 data class ProductResponse(

@@ -1,6 +1,6 @@
 package br.com.fastfood.core.domain.request
 
-import br.com.fastfood.adapter.persistence.enums.ProductCategory
+import br.com.fastfood.infra.enums.ProductCategory
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.NotBlank
 import java.time.LocalDateTime
