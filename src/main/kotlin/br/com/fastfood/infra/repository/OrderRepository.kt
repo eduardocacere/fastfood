@@ -25,7 +25,14 @@ class OrderRepository(
     }
 
     override fun findByStatus(status: OrderStatus): MutableList<Order> {
-        return orderMongoDBPort.findByStatus(status)
+        return orderMongoDBPort.findByStatus(mutableListOf(status))
+                ?.map { it.toDomain() }
+                ?.toMutableList()
+                ?: mutableListOf()
+    }
+
+    override fun findAllOrderPending(status: MutableList<OrderStatus>): MutableList<Order> {
+        return orderMongoDBPort.findByStatusNotIn(status)
                 ?.map { it.toDomain() }
                 ?.toMutableList()
                 ?: mutableListOf()

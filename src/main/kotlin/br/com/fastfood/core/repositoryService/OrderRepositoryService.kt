@@ -10,4 +10,6 @@ interface OrderRepositoryService {
     fun findByNumberOrder(numberOrder: String): Order
 
     fun findByStatus(status: OrderStatus): MutableList<Order>
+
+    fun findAllOrderPending(status: MutableList<OrderStatus>): MutableList<Order>
 }

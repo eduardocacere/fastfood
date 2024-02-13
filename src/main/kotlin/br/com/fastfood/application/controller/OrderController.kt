@@ -4,6 +4,7 @@ import br.com.fastfood.infra.enums.OrderStatus
 import br.com.fastfood.core.domain.exception.Error
 import br.com.fastfood.core.domain.request.OrderStoreRequest
 import br.com.fastfood.core.domain.response.OrderDetailResponse
+import br.com.fastfood.core.domain.response.OrderQueueResponse
 import br.com.fastfood.core.domain.response.OrderResponse
 import br.com.fastfood.infra.extensions.toOrderDetailResponse
 import br.com.fastfood.infra.extensions.toResponse
@@ -98,6 +99,31 @@ class OrderController(
     fun findByStatus(@PathVariable status: OrderStatus): ResponseEntity<MutableList<OrderResponse>> {
         val orders = useCase.findByStatus(status)?.map { it.toResponse() }?.toMutableList()
         return ResponseEntity.status(HttpStatus.OK).body(orders)
+    }
+
+
+    @Operation(summary = "Find all order pendig")
+    @ApiResponses(value = [
+        ApiResponse(
+                responseCode = "200",
+                description = "Create client",
+                content = [Content(mediaType = "application/json", schema = Schema(implementation = OrderResponse::class))]
+        ),
+        ApiResponse(
+                responseCode = "400",
+                description = "An error occurred during processing",
+                content = [Content(mediaType = "application/json", schema = Schema(implementation = Error::class))]
+        ),
+        ApiResponse(
+                responseCode = "404",
+                description = "Not found",
+                content = [Content(mediaType = "application/json", schema = Schema(implementation = Error::class))]
+        )
+    ])
+    @GetMapping("/flow")
+    fun findAllOrderPending(): ResponseEntity<OrderQueueResponse> {
+        val ordersQueue = useCase.findOrderByFlow()
+        return ResponseEntity.status(HttpStatus.OK).body(ordersQueue)
     }
 
 }

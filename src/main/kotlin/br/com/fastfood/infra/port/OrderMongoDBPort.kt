@@ -9,7 +9,8 @@ interface OrderMongoDBPort: MongoRepository<OrderDocument, ObjectId> {
 
     fun findByNumberOrder(numberOrder: String): OrderDocument?
 
-    fun findByStatus(status: OrderStatus): MutableList<OrderDocument>?
+    fun findByStatus(status: MutableList<OrderStatus>): MutableList<OrderDocument>?
+    fun findByStatusNotIn(status: MutableList<OrderStatus>): MutableList<OrderDocument>?
 
 
 }

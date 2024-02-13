@@ -54,7 +54,8 @@ fun Order.toResponse(): OrderResponse =
         OrderResponse(
                 numberOrder = numberOrder,
                 total = total,
-                status = status
+                status = status,
+                dateCreate = createAt
         )
 
 fun Order.toOrderDetailResponse(): OrderDetailResponse =
