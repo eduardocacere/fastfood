@@ -5,7 +5,7 @@ enum class OrderStatus {
     NEW,
     AWAITING_PAYMENT,
     IN_PREPARATION,
-    PAID,
+    PAYMENT_CONFIRMED,
     PAYMENT_REFUSED,
     FINISHED,
     DONE,
