@@ -16,7 +16,7 @@ services:
       - fiap-net
 
   app:
-    image: fastfood:lasted
+    image: fastfood:latest
     build:
       context: .
       dockerfile: Dockerfile

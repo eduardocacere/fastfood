@@ -3,7 +3,7 @@ spring:
     name: fastfood
   data:
     mongodb:
-      uri: mongodb://root:root@localhost:27017
+      uri: ${MONGO_URI:mongodb://root:root@localhost:27017}
       database: local
   jpa:
     hibernate:

@@ -9,7 +9,7 @@ echo "Gerando pacote da applicação"
 echo " "
 echo "Fazendp build da imagem"
   sleep 5
-  docker build -t fastfood:lasted .
+  docker build -t fastfood:latest .
 
 echo " "
 echo "Subindo Serviços e dependencias"
