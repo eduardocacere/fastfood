@@ -19,23 +19,24 @@ spec:
         resources:
           requests:
             memory: "250Mi"
-            cpu: 1m
+            cpu: 0.5m
         ports:
         - containerPort: 8080
-#        readinessProbe:
-#          httpGet:
-#            path: /actuator/health
-#            port: 8080
-#          initialDelaySeconds: 50
-#          periodSeconds: 10
-#          timeoutSeconds: 10
-#        livenessProbe:
-#          httpGet:
-#            path: /actuator/health
-#            port: 8080
-#          initialDelaySeconds: 40
-#          periodSeconds: 10
-#          timeoutSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 10
+          failureThreshold: 3
         env:
         - name: MONGO_URI
           valueFrom:

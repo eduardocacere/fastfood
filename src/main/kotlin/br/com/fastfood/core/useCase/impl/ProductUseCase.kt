@@ -19,6 +19,7 @@ class ProductUseCase(
     }
 
     override fun listAll(): MutableList<Product> {
+        logger.info("Consultando Produtos")
         return productRepository.findByAll()
     }
 
