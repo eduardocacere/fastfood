@@ -12,7 +12,6 @@ data class ClientDocument(
         @Id @Field(name = "_id")
         val id: ObjectId? = null,
         val name: String? = null,
-        @Indexed(unique = true)
         val email: String? = null,
         @Indexed(unique = true)
         val cpf: String? = null
