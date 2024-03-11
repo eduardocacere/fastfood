@@ -13,6 +13,5 @@ data class ClientDocument(
         val id: ObjectId? = null,
         val name: String? = null,
         val email: String? = null,
-        @Indexed(unique = true)
         val cpf: String? = null
 )
