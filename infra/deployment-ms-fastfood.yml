@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-fastfood
+spec:
+  selector:
+    matchLabels:
+      app: ms-fastfood
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ms-fastfood
+    spec:
+      containers:
+      - name: ms-fastfood-deployment
+        image: eduardosanches/ms-fastfood:latest
+        imagePullPolicy: Always        
+        resources:
+          requests:
+            memory: "250Mi"
+            cpu: 100m
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 10
+          failureThreshold: 3
+        env:
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: sc-default
+              key: MONGO_URI
+          
+        - name: MONGO_DATABASE
+          valueFrom:
+            secretKeyRef: 
+              name: sc-default
+              key: MONGO_DATABASE
+      
+
+
+
+

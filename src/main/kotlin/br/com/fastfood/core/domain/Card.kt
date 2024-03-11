@@ -1,7 +1,6 @@
 package br.com.fastfood.core.domain
 
-import br.com.fastfood.adapter.persistence.enums.Brand
-import java.time.LocalDate
+import br.com.fastfood.infra.enums.Brand
 
 data class Card(
         val nameCard: String,

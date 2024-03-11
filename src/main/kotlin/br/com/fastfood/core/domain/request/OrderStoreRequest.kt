@@ -1,7 +1,6 @@
 package br.com.fastfood.core.domain.request
 
-import br.com.fastfood.adapter.persistence.enums.TypeDelivery
-import br.com.fastfood.core.domain.Address
+import br.com.fastfood.infra.enums.TypeDelivery
 import io.swagger.v3.oas.annotations.media.Schema
 
 @Schema(

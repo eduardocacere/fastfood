@@ -1,7 +1,7 @@
 package br.com.fastfood.core.useCase.impl
 
-import br.com.fastfood.adapter.persistence.enums.ProductCategory
-import br.com.fastfood.adapter.persistence.repository.ProductRepository
+import br.com.fastfood.infra.enums.ProductCategory
+import br.com.fastfood.infra.repository.ProductRepository
 import br.com.fastfood.core.domain.Product
 import br.com.fastfood.core.domain.exception.NotFoundException
 import br.com.fastfood.core.useCase.IProductUseCase
@@ -19,6 +19,7 @@ class ProductUseCase(
     }
 
     override fun listAll(): MutableList<Product> {
+        logger.info("Consultando Produtos")
         return productRepository.findByAll()
     }
 

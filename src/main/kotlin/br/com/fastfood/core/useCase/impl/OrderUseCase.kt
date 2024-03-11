@@ -1,6 +1,6 @@
 package br.com.fastfood.core.useCase.impl
 
-import br.com.fastfood.adapter.persistence.enums.OrderStatus
+import br.com.fastfood.infra.enums.OrderStatus
 import br.com.fastfood.core.domain.Client
 import br.com.fastfood.core.domain.Order
 import br.com.fastfood.core.domain.OrderItem
@@ -8,8 +8,11 @@ import br.com.fastfood.core.domain.exception.FastFoodException
 import br.com.fastfood.core.domain.exception.NotFoundException
 import br.com.fastfood.core.domain.request.ClientOrderRequest
 import br.com.fastfood.core.domain.request.OrderStoreRequest
-import br.com.fastfood.core.port.repository.IOrderRepository
+import br.com.fastfood.core.domain.response.OrderQueueResponse
+import br.com.fastfood.core.domain.response.OrderResponse
+import br.com.fastfood.core.repositoryService.OrderRepositoryService
 import br.com.fastfood.core.useCase.IOrderUseCase
+import br.com.fastfood.infra.extensions.toResponse
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -19,7 +22,7 @@ import java.util.*
 
 @Service
 class OrderUseCase(
-        private val orderRepository: IOrderRepository,
+        private val orderRepository: OrderRepositoryService,
         private val clientUseCase: ClientUseCase,
         private val productUseCase: ProductUseCase
 ): IOrderUseCase {
@@ -63,6 +66,30 @@ class OrderUseCase(
         return orderRepository.create(order)
     }
 
+    override fun findOrderByFlow(): OrderQueueResponse {
+        val orders = orderRepository.findAllOrderPending( mutableListOf(OrderStatus.FINISHED, OrderStatus.PAYMENT_REFUSED))
+
+        val orderQueue: OrderQueueResponse = OrderQueueResponse()
+
+        orderQueue.done = buildOrderByStatus(orders, OrderStatus.DONE)
+        orderQueue.receveid = buildOrderByStatus(orders, OrderStatus.RECEIVED)
+        orderQueue.inPreparation = buildOrderByStatus(orders, OrderStatus.IN_PREPARATION)
+
+
+        return orderQueue
+    }
+
+    override fun updateStatus(numberOrder: String, status: OrderStatus): Order {
+        val order = findByNumberOrder(numberOrder)
+
+        order.status = status
+        val orderUpdated = update(order)
+
+        return orderUpdated
+
+
+    }
+
     private fun buildOrderItems(request: OrderStoreRequest) = request.items.map {
         val product = productUseCase.findByCode(it.codeProduct)
         val orderItem = OrderItem(
@@ -100,5 +127,13 @@ class OrderUseCase(
             return clientUseCase.findOrCreate(client)
         }
         return null
+    }
+
+    private fun buildOrderByStatus(orders: MutableList<Order>, status: OrderStatus): MutableList<OrderResponse> {
+        return orders
+                .filter { it.status.equals(status) }
+                .map { it.toResponse() }
+                .sortedByDescending { it.dateCreate }
+                .toMutableList()
     }
 }
