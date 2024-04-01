@@ -54,9 +54,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Build
+      - name: Setup JAva
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: '17'
+
+      - name: Build Application
         run: |
-          echo "Build da applicação - ${{ github.env }}"
+          echo "Build da applicação"
           ./mvnw clean package -DskipTests
 
 #      - name: Configure AWS credentials
