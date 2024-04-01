@@ -56,7 +56,8 @@ jobs:
 
       - name: Build
         run: |
-          echo "Build da applicação"
+          echo "Build da applicação - ${{ github.sha }}"
+          mvn clean package 
 
 #      - name: Configure AWS credentials
 #        uses: aws-actions/configure-aws-credentials@v1
