@@ -65,7 +65,7 @@ jobs:
           java-version: '17'
 
       - name: Set Env
-        run: echo "$(cat ./tag.txt)" > $TAG
+        run: echo "$(cat ./tag.txt)" > $TAG_CUSTOM_V2
 
 #      - name: Set Env and update
 #        run: echo "$(cat ./tag.txt)" > $TAG
@@ -79,7 +79,7 @@ jobs:
       - name: Acessando
         run: |
           echo "Mostrando variaveis1:"
-          echo $TAG
+          echo $TAG_CUSTOM_V2
           
           echo "Fim"
         
