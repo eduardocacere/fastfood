@@ -65,7 +65,7 @@ jobs:
       - name: Build Application
         run: |
           echo "Build da applicação"
-          ./tag.sh
+          sh tag.sh
           echo $TAG_IMAGEM
           pwd
 #          ./mvnw clean package -DskipTests
