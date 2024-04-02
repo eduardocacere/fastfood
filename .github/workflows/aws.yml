@@ -72,10 +72,8 @@ jobs:
       - name: Acessando
         run: |
           echo "Mostrando variaveis1"
+                              
           
-          echo "Mostrando variaveis2: ${{ TAG_IMAGEM }} "
-          
-          echo "Mostrando variaveis3: ${{ $TAG_IMAGEM }} "
         
          
 
