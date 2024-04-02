@@ -71,8 +71,9 @@ jobs:
 
       - name: Acessando
         run: |
-          echo "Mostrando variaveis1"
-                              
+          echo "Mostrando variaveis1:"
+          echo TAG_IMAGEM
+          echo $TAG_IMAGEM
           
         
          
