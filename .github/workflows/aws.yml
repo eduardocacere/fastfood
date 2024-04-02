@@ -50,6 +50,10 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./tag
     environment: production
 
     steps:
@@ -65,9 +69,8 @@ jobs:
       - name: Build Application
         run: |
           echo "Build da applicação"
-          sh ./tag.sh
+         
 
-          export TAG_IMAGEM=AQUI_UMA_TAG
 #          ./mvnw clean package -DskipTests
 
       - name: Acessando
