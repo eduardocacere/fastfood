@@ -67,8 +67,8 @@ jobs:
       - name: Set Env
         run: echo "$(cat ./tag.txt)" > $TAG_IMAGEM
 
-      - name: Set Env 2
-        run: echo "$(cat ./tag.txt)" > $TAG_IMAGEM2
+      - name: Set Env and update
+        run: echo "$(cat ./tag.txt)" > $TAG
 
       - name: Build Application
         run: |
@@ -80,7 +80,7 @@ jobs:
         run: |
           echo "Mostrando variaveis1:"
           echo $TAG_IMAGEM
-          echo $TAG_IMAGEM2
+          echo $TAG
           
           echo "Fim"
         
