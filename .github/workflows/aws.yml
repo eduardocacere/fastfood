@@ -67,6 +67,7 @@ jobs:
           echo "Build da applicação"
           sh ./tag.sh
 
+          export TAG_IMAGEM=AQUI_UMA_TAG
 #          ./mvnw clean package -DskipTests
 
       - name: Acessando
