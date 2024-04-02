@@ -66,9 +66,18 @@ jobs:
         run: |
           echo "Build da applicação"
           sh tag.sh
-          echo $TAG_IMAGEM
-          pwd
+
 #          ./mvnw clean package -DskipTests
+
+      - name: Acessando
+        run: |
+          echo "Mostrando variaveis1"
+          $TAG_IMAGEM
+          echo "Mostrando variaveis2: ${{ TAG_IMAGEM }} "
+          
+          echo "Mostrando variaveis3: ${{ $TAG_IMAGEM }} "
+        
+        
 
 #      - name: Configure AWS credentials
 #        uses: aws-actions/configure-aws-credentials@v1
