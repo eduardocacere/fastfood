@@ -50,10 +50,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./tag
     environment: production
 
     steps:
@@ -65,6 +61,13 @@ jobs:
         with:
           distribution: 'oracle'
           java-version: '17'
+
+      - name: Started Application
+        shell: bash
+        working-directory: ./tag
+        run: |
+          echo "Build da applicação"
+
 
       - name: Build Application
         run: |
