@@ -67,7 +67,7 @@ jobs:
       - name: Set Env
         run: echo "$(cat ./tag.txt)" > $TAG_IMAGEM
 
-      - name: Set Env
+      - name: Set Env 2
         run: echo "$(cat ./tag.txt)" > $TAG_IMAGEM2
 
       - name: Build Application
