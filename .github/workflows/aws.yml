@@ -67,6 +67,7 @@ jobs:
           echo "Build da applicação"
           ./tag.sh
           echo $TAG_IMAGEM
+          pwd
 #          ./mvnw clean package -DskipTests
 
 #      - name: Configure AWS credentials
