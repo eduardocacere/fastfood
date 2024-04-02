@@ -65,7 +65,7 @@ jobs:
       - name: Build Application
         run: |
           echo "Build da applicação"
-          cat ./tag
+          cat ./tag.sh
          
 
 #          ./mvnw clean package -DskipTests
