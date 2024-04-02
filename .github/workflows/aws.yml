@@ -65,7 +65,7 @@ jobs:
       - name: Build Application
         run: |
           echo "Build da applicação"
-          sh tag.sh
+          sh ./tag.sh
 
 #          ./mvnw clean package -DskipTests
 
@@ -75,6 +75,7 @@ jobs:
           echo TAG_IMAGEM
           echo $TAG_IMAGEM
           
+          echo "Fim"
         
          
 
