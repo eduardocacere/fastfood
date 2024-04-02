@@ -64,8 +64,8 @@ jobs:
           distribution: 'oracle'
           java-version: '17'
 
-      - name: Set Env
-        run: echo "$(cat ./tag.txt)" > $TAG_IMAGEM
+#      - name: Set Env
+#        run: echo "$(cat ./tag.txt)" > $TAG_IMAGEM
 
       - name: Set Env and update
         run: echo "$(cat ./tag.txt)" > $TAG
