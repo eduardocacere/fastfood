@@ -34,7 +34,7 @@ on:
       - '*'
 
 env:
-  TAG_IMAGEM: ${{ $(cat ./tag.txt) }}
+  TAG_IMAGEM: 1234
 #  AWS_REGION: MY_AWS_REGION                   # set this to your preferred AWS region, e.g. us-west-1
 #  ECR_REPOSITORY: MY_ECR_REPOSITORY           # set this to your Amazon ECR repository name
 #  ECS_SERVICE: MY_ECS_SERVICE                 # set this to your Amazon ECS service name
@@ -63,6 +63,9 @@ jobs:
         with:
           distribution: 'oracle'
           java-version: '17'
+
+      - name: Set Env
+        run: echo "$(cat ./tag.txt)" >> $TAG_IMAGEM
 
       - name: Build Application
         run: |
