@@ -66,12 +66,12 @@ jobs:
 
       - name: Read file contents
         id: read_file
-        uses: andstor/file-reader-action@v1
+        uses: guibranco/github-file-reader-action-v2@latest
         with:
           path: "tag.txt"
 
       - name: File contents
-        run: echo "${steps.read_file.outputs.contents}"
+        run: echo "${ steps.read_file.outputs.contents }"
 
 #
 #      - name: Build Application
