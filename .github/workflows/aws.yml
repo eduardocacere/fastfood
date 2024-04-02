@@ -64,26 +64,21 @@ jobs:
           distribution: 'oracle'
           java-version: '17'
 
-      - name: Set Env
-        run: echo "$(cat ./tag.txt)" > $TAG_CUSTOM_V2
+      - name: Read file contents
+        id: read_file
+        uses: andstor/file-reader-action@v1
+        with:
+          path: "tag.txt"
 
-#      - name: Set Env and update
-#        run: echo "$(cat ./tag.txt)" > $TAG
+      - name: File contents
+        run: echo "${ steps.read_file.outputs.contents }"
 
+#
 #      - name: Build Application
 #        run: |
 #          echo "Build da applicação"
 
 #          ./mvnw clean package -DskipTests
-
-      - name: Acessando
-        run: |
-          echo "Mostrando variaveis1:"
-          echo $TAG_CUSTOM_V2
-          
-          echo "Fim"
-        
-         
 
 #      - name: Configure AWS credentials
 #        uses: aws-actions/configure-aws-credentials@v1
