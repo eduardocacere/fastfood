@@ -67,6 +67,8 @@ jobs:
           echo "Build da applicação"
           cat ./tag.sh
           
+          chmod +x  ./tag.sh
+          
           ./tag.sh
          
 
