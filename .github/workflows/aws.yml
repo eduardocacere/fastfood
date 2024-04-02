@@ -62,16 +62,10 @@ jobs:
           distribution: 'oracle'
           java-version: '17'
 
-      - name: Started Application
-        shell: bash
-        working-directory: ./tag
-        run: |
-          echo "Build da applicação"
-
-
       - name: Build Application
         run: |
           echo "Build da applicação"
+          cat ./tag
          
 
 #          ./mvnw clean package -DskipTests
