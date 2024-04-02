@@ -1,0 +1,1 @@
+export TAG_IMAGEM=AQUI_UMA_TAG
