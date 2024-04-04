@@ -114,7 +114,7 @@ jobs:
     steps:
 
      - name: Prepare Deploy
-       run: echo "Fazendo Deploy :)"
+       run: echo "Fazendo Deploy :) :)"
 
 #      - name: Fill in the new image ID in the Amazon ECS task definition
 #        id: task-def
