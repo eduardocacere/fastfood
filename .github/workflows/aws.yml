@@ -61,19 +61,20 @@ jobs:
         with:
           distribution: 'oracle'
           java-version: '17'
-
-
-  build:
-    name: Build
-    needs: prepare-environment
-    runs-on: ubuntu-latest
-    steps:
       - name: Build Application
-        run: ./mvnw clean package
+        run: mvn clean package
+
+#  build:
+#    name: Build
+#    needs: prepare-environment
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Build Application
+#        run: mvn clean package
 
   conenct-cloud:
     name: Connect Aws Cloud
-    needs: build
+    needs: prepare-environment
     runs-on: ubuntu-latest
     steps:
       - name: Configure AWS credentials
