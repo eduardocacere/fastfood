@@ -64,21 +64,8 @@ jobs:
           distribution: 'oracle'
           java-version: '17'
 
-      - name: Read file contents
-        id: read_file
-        uses: guibranco/github-file-reader-action-v2@latest
-        with:
-          path: "tag.txt"
-
-      - name: File contents
-        run: echo "${ steps.read_file.outputs.contents }"
-
-#
-#      - name: Build Application
-#        run: |
-#          echo "Build da applicação"
-
-#          ./mvnw clean package -DskipTests
+      - name: Build Application
+        run: mvn clean package
 
 #      - name: Configure AWS credentials
 #        uses: aws-actions/configure-aws-credentials@v1
