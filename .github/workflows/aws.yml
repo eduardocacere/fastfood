@@ -90,7 +90,6 @@ jobs:
     needs: conenct-cloud
     runs-on: self-hosted
     steps:
-      -
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
@@ -114,7 +113,7 @@ jobs:
     steps:
 
      - name: Prepare Deploy
-       run: echo "Fazendo Deploy :) :)"
+       run: echo "Fazendo Deploy :)"
 
 #      - name: Fill in the new image ID in the Amazon ECS task definition
 #        id: task-def
