@@ -48,24 +48,35 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
-    name: Deploy
+
+  prepare-environment:
+    name: Prepare Environment
     runs-on: ubuntu-latest
     environment: production
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Setup JAva
         uses: actions/setup-java@v3
         with:
           distribution: 'oracle'
           java-version: '17'
 
+
+  build:
+    name: Build
+    needs: prepare-environment
+    runs-on: self-hosted
+    steps:
       - name: Build Application
         run: mvn clean package
 
+  conenct-cloud:
+    name: Connect Aws Cloud
+    needs: build
+    runs-on: self-hosted
+    steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -73,6 +84,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
+
+  upload-image:
+    name: Upload Image
+    needs: conenct-cloud
+    runs-on: self-hosted
+    steps:
+      -
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
@@ -89,6 +107,14 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: self-hosted
+    steps:
+
+     - name: Prepare Deploy
+       run: echo "Fazendo Deploy :)"
 
 #      - name: Fill in the new image ID in the Amazon ECS task definition
 #        id: task-def
