@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build Application
-        run: mvn clean package
+        run: ./mvnw clean package
 
   conenct-cloud:
     name: Connect Aws Cloud
