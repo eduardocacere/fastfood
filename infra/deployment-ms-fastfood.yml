@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ms-fastfood-deployment
-        image: eduardosanches/ms-fastfood:latest
+        image: DOCKER_IMAGE
         imagePullPolicy: Always        
         resources:
           requests:
