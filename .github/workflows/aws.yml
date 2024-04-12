@@ -65,7 +65,7 @@ jobs:
         with:
           distribution: 'oracle'
           java-version: '17'
-        run: export JAVA_TOOL_OPTIONS="-Dhttps.protocols=TLSv1.2"
+
 
       - name: Build Application
         run: mvn clean package
