@@ -37,8 +37,6 @@ env:
   AWS_REGION: ${{ vars.AWS_REGION }}                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}           # set this to your Amazon ECR repository name
   EKS_CLUSTER_NAME: ${{ vars.EKS_CLUSTER_NAME }}
-  spring.profiles.active: local
-
 #  ECS_SERVICE: MY_ECS_SERVICE                 # set this to your Amazon ECS service name
 #  ECS_CLUSTER: MY_ECS_CLUSTER                 # set this to your Amazon ECS cluster name
 #  ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
@@ -60,10 +58,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup JAva
+      - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'oracle'
+          distribution: 'temurin'
           java-version: '17'
 
 
