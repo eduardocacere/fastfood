@@ -5,6 +5,8 @@ spring:
     mongodb:
       uri: ${MONGO_URI}
       database: fiapdb
+      ssl:
+        enabled: true
   jpa:
     hibernate:
       ddl-auto: none

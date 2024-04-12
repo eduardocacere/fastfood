@@ -10,6 +10,8 @@ spring:
     mongodb:
       uri: ${MONGO_URI}
       database: ${MONGO_DATABASE}
+      ssl:
+        enabled: false
   jpa:
     hibernate:
       ddl-auto: none
