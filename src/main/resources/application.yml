@@ -2,9 +2,7 @@ management:
   endpoints:
     web:
       exposure:
-        include:
-          - openapi
-          - swagger-ui
+        include: "*"
   endpoint:
     health:
       enabled: true
