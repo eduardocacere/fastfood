@@ -1,7 +1,15 @@
 management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - openapi
+          - swagger-ui
   endpoint:
     health:
       enabled: true
+springdoc:
+  show-actuator: true
 
 spring:
   application:
