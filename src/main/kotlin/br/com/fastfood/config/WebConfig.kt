@@ -10,6 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 class WebConfig: WebMvcConfigurer {
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler("/**")
-                .addResourceLocations("resources/");
+                .addResourceLocations("/**", );
     }
 }
