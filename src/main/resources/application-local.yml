@@ -3,8 +3,8 @@ spring:
     name: fastfood
   data:
     mongodb:
-      uri: ${MONGO_URI:mongodb://fiap:fastfood@ac-un7na5c-shard-00-01.kyofdjy.mongodb.net:27017/?ssl=true&retryWrites=true&loadBalanced=false&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=fiapdb&authMechanism=SCRAM-SHA-1}
-      database: fiapdb
+      uri: ${MONGO_URI}
+      database: ${MONGO_DATABASE}
       ssl:
         enabled: true
   jpa:
