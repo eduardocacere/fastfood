@@ -2,7 +2,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include:
+          - actuator
+          - health
+          - info
   endpoint:
     health:
       enabled: true
@@ -24,4 +27,9 @@ spring:
 
 server:
   port: 8080
+
+fastfood:
+  openapi:
+    dev-url: "http://localhost:8080"
+    prod-url: "https://k0ja38dkb9.execute-api.us-east-1.amazonaws.com"
 
