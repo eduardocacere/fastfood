@@ -8,6 +8,6 @@ interface CheckoutRepositoryService {
 
     fun findByNumerCheckout(numberCheckout: String): Checkout?
 
-    fun existNumbercheckout(numberCheckout: String): Boolean
+    fun existNumbercheckout(number: String): Boolean
 
 }
