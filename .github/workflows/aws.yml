@@ -19,6 +19,8 @@ env:
   AWS_REGION: ${{ vars.AWS_REGION }}                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}           # set this to your Amazon ECR repository name
   EKS_CLUSTER_NAME: ${{ vars.EKS_CLUSTER_NAME }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 permissions:
   contents: read
@@ -87,7 +89,7 @@ jobs:
         run: echo ${{ env.SONAR_TOKEN }}
 
       - name: Build and analyze
-        env:
+        with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
