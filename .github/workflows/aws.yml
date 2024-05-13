@@ -60,6 +60,7 @@ jobs:
   code-analisys:
     name: Build and analyze
     runs-on: ubuntu-latest
+    needs: unit-test
     steps:
       - uses: actions/checkout@v3
         with:
