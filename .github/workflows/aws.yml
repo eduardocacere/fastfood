@@ -20,7 +20,7 @@ env:
   ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}           # set this to your Amazon ECR repository name
   EKS_CLUSTER_NAME: ${{ vars.EKS_CLUSTER_NAME }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-  SONAR_TOKEN: "b62b16aca65600a0ded36f5ca7607ea47b03e045"
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 permissions:
   contents: read
