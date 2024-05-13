@@ -21,7 +21,6 @@
 		<sonar.organization>fiaptechchallenge</sonar.organization>
 		<sonar.projectKey>fastfood</sonar.projectKey>
 
-
 		<sonar.language>kotlin</sonar.language>
 		<sonar.sources>src/main/kotlin</sonar.sources>
 		<sonar.working.directory>target/sonar</sonar.working.directory>
