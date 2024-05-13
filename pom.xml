@@ -20,6 +20,7 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.organization>fiaptechchallenge</sonar.organization>
 		<sonar.projectKey>fastfood</sonar.projectKey>
+		<sonar.login>b62b16aca65600a0ded36f5ca7607ea47b03e045</sonar.login>
 
 		<sonar.language>kotlin</sonar.language>
 		<sonar.sources>src/main/kotlin</sonar.sources>
