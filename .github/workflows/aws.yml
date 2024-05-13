@@ -58,7 +58,7 @@ jobs:
           path: target/site/jacoco/
 
   code-analisys:
-    name: Build and analyze
+    name: Analyze quality gate
     runs-on: ubuntu-latest
     needs: unit-test
     steps:
@@ -87,7 +87,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fastfood
+        run: mvn -B -X verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fastfood
 
   deploy:
     name: Deploy
