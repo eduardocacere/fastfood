@@ -9,6 +9,7 @@ class FastfoodApplication
 fun main(args: Array<String>) {
 	System.out.println("MONGO_URI: ${System.getenv("MONGO_URI")}")
 	System.out.println("MONGO_DATABASE: ${System.getenv("MONGO_DATABASE")}")
+	System.out.println("JAVA OPTS: ${System.getenv("JAVA_OPTS")}")
 
 	runApplication<FastfoodApplication>(*args)
 }

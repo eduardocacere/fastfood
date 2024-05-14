@@ -21,7 +21,7 @@ class CheckoutRepository(
         return checkoutMongoDBPort.findByNumberCheckout(numberCheckout)?.toDomain()
     }
 
-    override fun existNumbercheckout(numberOrder: String): Boolean {
-        return checkoutMongoDBPort.existsByOrderNumberOrder(numberOrder)
+    override fun existNumbercheckout(number: String): Boolean {
+        return checkoutMongoDBPort.existsByOrderNumberOrder(number)
     }
 }

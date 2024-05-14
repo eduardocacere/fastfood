@@ -1,7 +1,16 @@
 management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - actuator
+          - health
+          - info
   endpoint:
     health:
       enabled: true
+springdoc:
+  show-actuator: true
 
 spring:
   application:
@@ -10,11 +19,17 @@ spring:
     mongodb:
       uri: ${MONGO_URI}
       database: ${MONGO_DATABASE}
-      auto-index-creation: true
+      ssl:
+        enabled: false
   jpa:
     hibernate:
       ddl-auto: none
 
 server:
   port: 8080
+
+fastfood:
+  openapi:
+    dev-url: "http://localhost:8080"
+    prod-url: "https://k0ja38dkb9.execute-api.us-east-1.amazonaws.com"
 

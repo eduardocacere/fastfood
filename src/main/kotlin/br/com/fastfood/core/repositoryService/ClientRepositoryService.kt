@@ -6,6 +6,6 @@ interface ClientRepositoryService {
 
     fun create(client: Client): Client
     fun findByDoc(cpf: String): Client?
-    fun findByEmail(cpf: String): Client?
+    fun findByEmail(email: String): Client?
     fun list(): MutableList<Client>
 }
